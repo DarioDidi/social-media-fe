@@ -3,6 +3,8 @@
  * */
 
 import Layout from "@/components/layout/Layout";
+import { GET_TIMELINE } from "@/graphql/queries";
+import { useQuery } from "@apollo/client";
 import { useState } from "react";
 
 
@@ -12,6 +14,9 @@ const Home = () => {
   const [offset, setOffset] = useState(0);
 
   //TODO: setup graphql query
+  const { loading, error, data, fetchMore } = useQuery(GET_TIMELINE, {
+    variables: { limit, offset },
+  });
 
   //TODO: handle likes, shares, comments(with modal)
 
