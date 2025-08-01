@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AiFillApi } from "react-icons/ai";
 import { FaHeart, FaComment, FaRetweet, FaShare } from 'react-icons/fa';
 
+import Image from "next/image";
 
 interface PostCardProps {
 	post: Post;
@@ -16,6 +17,11 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onComment, onShare })
 	const [isLiked, setIsLiked] = useState(post.liked);
 	const [likeCount, setLikeCount] = useState(post.likes);
 
+	const handleLike = () => {
+		setIsLiked(!isLiked);
+		setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
+		onLike(post.id);
+	}
 
 	return (
 		<div className="post-catd bg-white rounded-lg shadow p-4 mb-4 hover:shadow-md transition-shadow">
@@ -63,6 +69,21 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onComment, onShare })
 						>
 							<FaComment className="mr-1" />
 							<span>{post.comments.length}</span>
+						</button>
+
+						<button
+							onClick={() => onShare(post.id)}
+							className="flex items-center hover:text-green-500"
+						>
+							<FaRetweet className="mr-1" />
+							<span>{post.shares}</span>
+						</button>
+						<button
+							onClick={handleLike}
+							className={`flex items-center ${isLiked ? 'text-red-500' : 'hover:text-red-500'}`}
+						>
+							<FaHeart className="mr-1" />
+							<span>{likeCount}</span>
 						</button>
 						<button
 							onClick={() => onShare(post.id)}
