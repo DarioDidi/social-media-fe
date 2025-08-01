@@ -1,3 +1,9 @@
+import { ReactNode } from "react";
+
+export interface ReactComponentProps {
+  children: ReactNode
+}
+
 export interface User {
   id: string;
   name: string;
