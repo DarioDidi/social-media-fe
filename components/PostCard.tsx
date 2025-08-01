@@ -56,6 +56,20 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onComment, onShare })
 
 
 					{/*Comments/shares/likes*/}
+					<div className="flex justify-between mt-3 text-gray-500">
+						<button
+							onClick={() => onComment(post.id)}
+							className="flex items-center hover:text-blue-500"
+						>
+							<FaComment className="mr-1" />
+							<span>{post.comments.length}</span>
+						</button>
+						<button
+							onClick={() => onShare(post.id)}
+							className="flex items-center hover:text-purple-500">
+							<FaShare className="mr-1" />
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
