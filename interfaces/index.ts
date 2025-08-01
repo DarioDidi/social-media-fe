@@ -7,7 +7,7 @@ export interface User {
   joinDate: string;
   followingCount: number;
   followersCount: number;
-  isVerifies?: boolean;
+  isVerified?: boolean;
 }
 
 export interface Post {
