@@ -1,6 +1,5 @@
 import { Post } from "@/interfaces";
 import { useState } from "react";
-import { AiFillApi } from "react-icons/ai";
 import { FaHeart, FaComment, FaRetweet, FaShare } from 'react-icons/fa';
 
 import Image from "next/image";
@@ -26,7 +25,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onComment, onShare })
 	return (
 		<div className="post-catd bg-white rounded-lg shadow p-4 mb-4 hover:shadow-md transition-shadow">
 			<div className="flex items-start">
-				<img
+				<Image
 					src={post.author.avatar}
 					alt={post.author.name}
 					className="w-12 h-12, rounded-full mr-3"
@@ -95,4 +94,6 @@ const PostCard: React.FC<PostCardProps> = ({ post, onLike, onComment, onShare })
 			</div>
 		</div>
 	)
-}
+};
+
+export default PostCard;
